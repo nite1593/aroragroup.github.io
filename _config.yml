@@ -1,0 +1,41 @@
+# Site Build Settings
+
+url: "https://aroragroup.github.io"
+baseurl: ""        # MUST be empty for user sites
+# If you want to use remote Lagrange:
+remote_theme: LeNPaul/Lagrange
+# remove any conflicting 'theme:' lines
+# theme: jekyll-theme-primer   <-- REMOVE if present
+
+
+# Pagination (number of posts/news per page)
+paginate:            5
+
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           /:title
+plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+
+# Site identity
+title:               "Structured & Active Materials Lab"
+author:              "Nitesh Arora"
+
+# RSS feed (optional)
+# feed:
+#   path: rss-feed.xml
+
+# Navigation menu (add your custom pages here)
+navigation:
+  - title: "Home"
+    url: /
+  - title: "People"
+    url: /people
+  - title: "Research"
+    url: /research
+  - title: "Publications"
+    url: /publications
+  - title: "News"
+    url: /news
+  - title: "Contact"
+    url: /contact

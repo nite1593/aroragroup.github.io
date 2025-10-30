@@ -1,0 +1,353 @@
+---
+---
+
+/* =========================
+   Font Families
+   ========================= */
+$sans-serif-font-family: "Quattrocento Sans", sans-serif;
+$serif-font-family: "PT Serif", Georgia, "Times New Roman", serif;
+$code-font-family: "Source Code Pro", monospace;
+
+/* =========================
+   Colors
+   ========================= */
+$body-color: #505050;
+$link-color: black;
+
+$code-background-color: #f5f5f5;
+$pagination-button-color: #e0e0e0;
+
+$dark-gray-color: #333;
+$light-gray-color: #999;
+$extra-light-gray-color: #ccc;
+
+$container-responsive-width: 768px;
+$elements-responsive-width: 30em;
+
+$icon-transition-time: 0.5s;
+
+/* =========================
+   Global Setup
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-size: 1.2rem !important;
+  color: $body-color;
+}
+
+.container,
+.content-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   Flex Layout Helpers
+   ========================= */
+.flex-row, 
+.pi-section, 
+.research-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.flex-row > div,
+.pi-section > div,
+.research-row > div {
+  flex: 1 1 250px;
+  min-width: 0;
+}
+
+/* =========================
+   PI Section
+   ========================= */
+.pi-section {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* --- Responsive: People page --- */
+@media (max-width: 768px) {
+  body.people .pi-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  body.people .pi-info {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  body.people .pi-section > div:first-child {
+    min-width: 200px;
+    min-height: 200px;
+  }
+
+  body.people .social-icons {
+    justify-content: center;
+  }
+}
+
+/* =========================
+   HEADER
+   ========================= */
+.header {
+  font-family: $sans-serif-font-family;
+  margin-bottom: 3rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+/* --- Top Row (Logo + Title) --- */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 12px;
+}
+
+/* --- Logo --- */
+.header-logo img {
+  width: 60px !important;    /* fixed constant size */
+  height: 60px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  vertical-align: middle;
+}
+
+.header-logo img:hover {
+  transform: scale(1.08);
+}
+
+/* --- Title --- */
+.header-title {
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header-title a {
+  font-size: 1.8rem;
+  color: $body-color;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: normal;
+  text-align: left;
+}
+
+/* --- Bottom Row (Menu) --- */
+.header-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.6rem;
+}
+
+/* --- Menu --- */
+.menu-wrapper {
+  position: relative;
+}
+
+.menu-content {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.menu-content a {
+  color: $dark-gray-color;
+  text-decoration: none;
+  font-size: 1.3rem !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.menu-content a:hover,
+.menu-content a.active {
+  color: black;
+}
+
+/* --- Underline hover animation --- */
+.menu-content a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: black;
+  transition: width 0.3s ease;
+  margin: auto;
+}
+
+.menu-content a:hover::after {
+  width: 100%;
+}
+
+/* --- Toggle Button (mobile) --- */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: $dark-gray-color;
+}
+
+/* =========================
+   MOBILE MENU
+   ========================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1100;
+  }
+
+  .header-bottom {
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .header-top {
+    justify-content: flex-start;
+  }
+
+  .menu-content {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 12px 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* softer shadow */
+    border-radius: 6px;
+    z-index: 1000;
+  }
+
+  .menu-content.open {
+    display: flex;
+  }
+
+  .menu-content a {
+    font-size: 1.2rem;
+    width: 100%;
+  }
+}
+
+/* =========================
+   Research Page
+   ========================= */
+#research-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.theme-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.theme-content h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* --- Image + Text Container --- */
+.theme-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+/* --- Image --- */
+.theme-image img {
+  /*width: 500px;        /* fixed width */
+  height: 250px;       /* fixed height */
+  border:#222;
+  object-fit: cover;
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+.theme-image img:hover {
+  transform: scale(1);
+}
+
+/* --- Text --- */
+.theme-text {
+  text-align: left;
+  color: #333;
+  line-height: 1;
+}
+
+/* --- Desktop Layout: side-by-side --- */
+@media (min-width: 768px) {
+  .theme-body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .theme-image {
+    flex-shrink: 0;
+  }
+
+  .theme-text {
+    flex: 1;
+  }
+}
+
+
+
+
+/* =========================
+   SOCIAL MEDIA ICON COLORS
+   ========================= */
+$envelope-color: #f39c12;
+$twitter-color: #00aced;
+$instagram-color: #375989;
+$github-color: #343434;
+$linkedin-color: #0073a4;
+$facebook-color: #3d5b99;
+$pinterest-color: #bd081c;
+$medium-color: #00ab6c;
+$codepen-color: black;
+$rss-color: #ff6600;
+
+/* =========================
+   IMPORT OTHER SECTIONS
+   ========================= */
+@import "-sections-dir";

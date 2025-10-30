@@ -1,0 +1,49 @@
+<header class="header">
+  <!-- Lab name row -->
+  <div class="header-top">
+    <a href="{{ site.github.url }}/" class="header-logo">
+      <img src="{{ site.github.url }}/assets/img/lab_logo.svg" alt="SAM Lab Logo">
+    </a>
+    <h3 class="header-title">
+      <a href="{{ site.github.url }}/">{{ site.title }}</a>
+    </h3>
+</div>
+
+  <!-- Menu row -->
+  <div class="header-bottom">
+    <div class="menu-wrapper">
+      <!-- Toggle button (small screens) -->
+      <button class="menu-toggle">&#9776;</button>
+
+      <!-- Menu links -->
+      <nav class="menu-content">
+        {% for item in site.data.settings.menu %}
+          <a href="{{ item.url | relative_url }}"
+             class="{% if page.url == '/' and item.url == '/' %}active{% elsif page.url contains item.url and item.url != '/' %}active{% endif %}">
+            {{ item.name }}
+          </a>
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Script to handle toggle and outside click -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu-content');
+
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation(); // prevent document click from closing immediately
+      menu.classList.toggle('open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  });
+</script>

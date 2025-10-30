@@ -1,0 +1,16 @@
+<div class="menu-wrapper">
+  <!-- Toggle button -->
+  <button class="menu-toggle" onclick="document.querySelector('.menu-content').classList.toggle('open')">
+    &#9776;
+  </button>
+
+  <!-- Menu links -->
+  <nav class="menu-content">
+    {% for item in site.data.settings.menu %}
+      <a href="{{ item.url | relative_url }}"
+         class="{% if page.url == '/' and item.url == '/' %}active{% elsif page.url contains item.url and item.url != '/' %}active{% endif %}">
+        {{ item.name }}
+      </a>
+    {% endfor %}
+  </nav>
+</div>
