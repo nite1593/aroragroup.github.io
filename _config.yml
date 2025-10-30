@@ -1,7 +1,7 @@
 # Site Build Settings
 
 url: "https://aroragroup.github.io"
-baseurl: ""        # MUST be empty for user sites
+baseurl: "/aroragroup.github.io"        # MUST be empty for user sites
 # If you want to use remote Lagrange:
 remote_theme: LeNPaul/Lagrange
 # remove any conflicting 'theme:' lines
@@ -28,14 +28,15 @@ author:              "Nitesh Arora"
 # Navigation menu (add your custom pages here)
 navigation:
   - title: "Home"
-    url: /
+    url: "{{ site.baseurl }}/"
   - title: "People"
-    url: /people
+    url: "{{ site.baseurl }}/people"
   - title: "Research"
-    url: /research
+    url: "{{ site.baseurl }}/research"
   - title: "Publications"
-    url: /publications
+    url: "{{ site.baseurl }}/publications"
   - title: "News"
-    url: /news
+    url: "{{ site.baseurl }}/news"
   - title: "Contact"
-    url: /contact
+    url: "{{ site.baseurl }}/contact"
+
